@@ -77,8 +77,21 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <p style="text-align:justify;">Top 20 in the world in Cyberwraith Challenge in Defcon<br>Volunteered for the Defcon 28 as a part of Red Team Village<br>Coordinated Asian region fo Cyber Jungle Virtual Summit<br></p>
                     </section>
                     <section id="content3" class="inner-w3layouts-wrap">
-                       <h3 class="head-w3ls">Account takeover by executing Persistent Blind XSS in ..............</h3>
-                      <p style="text-align:justify;">Coming soon
+                       <h3 class="head-w3ls">Prototype Pollution Bug in Material UI/Utils</h3>
+                      <p style="text-align:justify;">Material UI is a React components for faster and simpler web development to build our own design system, or start with Material Design.<br>While hunt for bugs in npm packages i found material ui repository and it is using a lot of js and ts files and a file struck in my mind it was deepmerge.ts after reviewing the code i got 100% sure that it is vulnerable to Prototype pollution bug<br>I played with the file and POC for triggering prototype pollution i was new to code reviewing so that it took a lot of time i spend on it<br><iframe src="https://giphy.com/embed/o0vwzuFwCGAFO" width="200" height="200" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><br>After spending a lot of time on it i called my friend Asjid Kalam to talk about the issue and he helped me to finish the exploit yeah the exploit was a bit different but finally it worked violaa... <br><iframe src="https://giphy.com/embed/3oKIP6AYztSrFZ0AoM" width="200" height="200" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><br>Now time to report and it was my first prototype pollution bug reporting<br><br><b>Affected component</b> : deepmerge function<br><br></p><p style="text-align:justify;"> <b>Attack vector</b> :<br>
+Prototype Pollution refers to the ability to inject properties into existing JavaScript language construct prototypes, such as objects. JavaScript allows all Object attributes to be altered, including their magical attributes such as _proto_, constructor and prototype. An attacker manipulates these attributes to overwrite, or pollute, a JavaScript application object prototype of the base object by injecting other values. Properties on the Object.prototype are then inherited by all the JavaScript objects through the prototype chain. When that happens, this leads to either denial of service by triggering JavaScript exceptions, or it tampers with the application source code to force the code path that the attacker injects, thereby leading to remote code execution.</p><br><p style="text-align:justify;"><b>Reproduction steps:</b><br>
+1. Creating poc file namely poc.js<br>
+2. var utils = require('@material-ui/utils');<br>
+var src = {};<br>
+let object = utils.deepmerge({}, JSON.parse('{ "myProperty": "a", "prototype" : { "isAdmin" : true } }'),<br>
+{<br>
+&emsp;clone: false,<br>
+});<br>
+console.log(object.prototype.isAdmin);<br>
+3. Execute npm install @material-ui/utils command in terminal<br>
+4. Execute node poc.js command in terminal.<br>
+<img src="blog3/exploited.png" width="640" height="480"><br>
+<b>THANK YOU For Reading my blog post</b><br>
 </p>
                     </section>
                             <a href="../index.html"><button type="submit" id="next">Watch My Blogs</button></a>
