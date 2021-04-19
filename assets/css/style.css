@@ -24,7 +24,7 @@ body::before {
   left: 0;
   right: 0;
   top: 0;
-  height: 100vh;
+  height: 150vh;
   z-index: -1;
 }
 
