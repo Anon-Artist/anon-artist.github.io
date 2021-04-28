@@ -6,19 +6,38 @@ License: https://www.wowthemes.net/freebies-license/
 */
 body {
 	padding-top:5rem;
+	background-color: black;
 }
 .mainheading {
 	padding:1rem 0rem;
 }
+/* for normal text */
+p{
+	color: white; 
+}
+
+h1{
+	color: white;
+}
+
+h2{
+	color: white;
+}
+b{
+	color:green;
+}
+
 a {
-	color:#00ab6b;
+	color:red;
 }
 a,a:hover {
 	transition:all 0.2s;
 }
+
+/* navibar color */
 .mediumnavigation {
-	background:rgba(255,255,255,.97);
-	box-shadow:0 2px 2px -2px rgba(0,0,0,.15);
+	background:#C0C0C0;
+	box-shadow:0 2px 2px -2px rgba(0,0,0,.25);
 }
 section {
 	margin-bottom:20px;
@@ -47,6 +66,7 @@ section {
 	.navbar-toggleable-md .navbar-nav .nav-link {
 		padding-right:.7rem;
 		padding-left:.7rem;
+
 	}
 }
 .card-columns .card {
@@ -217,16 +237,16 @@ span.post-name a,span.post-read-more a:hover {
 	color:rgba(0,0,0,.8);
 }
 .article-post {
-	font-family:Merriweather;
-	font-size:1.2rem;
+	font-family:Courier New;
+	font-size:1.15rem;
 	line-height:1.8;
-	color:rgba(0,0,0,.8);
+	color:rgba(255, 0, 212, 0.8);
 }
 blockquote {
-	border-left:4px solid #00ab6b;
+	border-left:4px solid #ab0000;
 	padding:0 20px;
 	font-style:italic;
-	color:rgba(0,0,0,.5);
+	color:rgb(255,255,255);
 }
 .article-post p,.article-post blockquote {
 	margin:0 0 1.5rem 0;
