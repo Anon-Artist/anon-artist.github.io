@@ -50,13 +50,13 @@
 		<div class="col-md-8 col-md-offset-2 col-xs-12">
 			<div class="mainheading">
 
-				<h1 class="posttitle" style="color:white">Story about CVE-2020-25449 and CVE-2020-7734</h1>
+				<h1 class="posttitle" style="color:green">Story about CVE-2020-25449 and CVE-2020-7734</h1>
 
 			</div>
 
 			<!-- Begin Post Content -->
 			<div class="article-post">
-				<p style >
+				<p>
 					While I was searching for opensource software for finding bugs I found Cabot application. Cabot is a free, open-source, self-hosted infrastructure monitoring platform that provides some of the best features of PagerDuty, Server Density, Pingdom and Nagios without their cost and complexity.It provides a web interface that allows you to monitor services and send telephone, sms or hipchat/email alerts to your on-duty team if those services start misbehaving or go down - all without writing a line of code.
 				</p>
 				<p>
@@ -74,7 +74,7 @@
 				<p>
 				Now time to report
 				</p>
-				<br><br><h2>CVE-2020-25449</h2><b>Affected component:</b> New HTTP check Section<br><br></p><p class="font-italic"> <b>Attack vector:</b><br>
+				<br><br><h2>CVE-2020-25449</h2><b>Affected component</b> : New HTTP check Section<br><br></p><p class="font-italic"> <b>Attack vector</b> :<br>
 Cabot application allows XSS in the dashboard via a category of creating New HTTP Checks.XSS triggers each time when we run the checks too, This can be found in the both administrative and user dashboards.</p><br><p class="font-italic"><b>Reproduction steps:</b><br>
 1. Download and Install Latest Cabot Application in a local server.<br>
 2. Go to the dashboard section then Navigate to New Checks Tab.<br>
@@ -83,7 +83,7 @@ Cabot application allows XSS in the dashboard via a category of creating New HTT
 4. Append the input boxes of End point with XSS Payload.<br>
 5. Save the checks and run the checks.<br>
 6. We can see an XSS pop up if we click on run button.<br><img src="blog2/XSS triggered.png" alt="XSS triggered" width="100%" height="auto" frameBorder="0"><br>we can trigger this xss on other users by just by adding a new services which notify in victim account<br><br><br><h2>CVE-2020-7734</h2>
-<b>Affected component:</b> Creating New Instances and Services<br><br></p><p class="font-italic"> <b>Attack vector:</b><br>
+<b>Affected component</b> : Creating New Instances and Services<br><br></p><p class="font-italic"> <b>Attack vector</b> :<br>
 Cabot application allows Blind XSS in the dashboard of any account via a category of creating New Instances and triggers blind XSS each time when we run the checks in victim account which lead to account takeover including Django Administrator account</p><br><p class="font-italic"><b>Reproduction steps:</b><br>
 1. Download and Install Latest Cabot Application in a local server.<br>
 2. Create an admin account and using the admin account create a user account<br>
